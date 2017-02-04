@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Spawner : MonoBehaviour, PausedObject
 {
@@ -9,6 +7,7 @@ public class Spawner : MonoBehaviour, PausedObject
     private int inc = 0;
     private float range = 0.25f;
     private bool pause = false;
+    private bool desactivate = false;
 
 	void Start ()
     {
@@ -17,8 +16,8 @@ public class Spawner : MonoBehaviour, PausedObject
 	
 	void Update ()
     {
-        if (pause) return;
-        if (inc > cooldown)
+        if (pause || desactivate) return;
+        if (inc > cooldown && transform.childCount <= 100)
         {
             inc = 0;
             if (cooldown > 10) cooldown--;
@@ -46,5 +45,10 @@ public class Spawner : MonoBehaviour, PausedObject
     public void PauseOnOff(bool onOff)
     {
         pause = onOff;
+    }
+
+    public void Desactivate()
+    {
+        desactivate = true;
     }
 }
