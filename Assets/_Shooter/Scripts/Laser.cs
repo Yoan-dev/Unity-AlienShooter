@@ -58,9 +58,9 @@ public class Laser : MonoBehaviour {
                 textScore.text = "Score: " + score;
             }
         }
-        else if (hit.collider.name == "Structure")
+        else if (hit.collider.name == "Tower")
         {
-            hit.collider.gameObject.GetComponent<Structure>().Hit(0.25f);
+            hit.collider.gameObject.transform.parent.GetComponent<Structure>().Hit(0.25f);
         }
         else if (hit.collider.name == "restart")
         {
