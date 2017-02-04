@@ -17,10 +17,10 @@ public class Spawner : MonoBehaviour, PausedObject
 	void Update ()
     {
         if (pause || desactivate) return;
-        if (inc > cooldown && transform.childCount <= 100)
+        if (inc > cooldown && transform.childCount <= 50)
         {
             inc = 0;
-            if (cooldown > 10) cooldown--;
+            if (cooldown > 1) cooldown--;
             float x, y;
             if (FlipACoin())
             {

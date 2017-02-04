@@ -28,7 +28,7 @@ public class Structure : MonoBehaviour {
     {
         if (hp < 0) return;
         hp -= damage;
-        hpText.text = ((int)hp) + "";
+        if (hp >= 0) hpText.text = ((int)hp) + "";
         if (hp < 0)
         {
             reticule.SetActive(false);

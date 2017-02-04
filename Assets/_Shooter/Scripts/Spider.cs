@@ -19,7 +19,7 @@ public class Spider : MonoBehaviour, PausedObject
     {
         if (pause || dead) return;
         transform.LookAt(structure.transform);
-        transform.position = Vector3.MoveTowards(transform.position, structure.transform.position, 0.0005f);
+        transform.position = Vector3.MoveTowards(transform.position, structure.transform.position, 0.00075f);
         if (!animation.isPlaying)
         {
             animation.Play("Walk");
