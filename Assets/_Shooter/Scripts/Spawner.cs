@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour, PausedObject
 {
     public GameObject spider;
-    private int cooldown = 200;
+    private int cooldown = 100;
     private int inc = 0;
     private float range = 0.25f;
     private bool pause = false;
@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour, PausedObject
         if (inc > cooldown)
         {
             inc = 0;
-            if (cooldown > 0) cooldown--;
+            if (cooldown > 10) cooldown--;
             float x, y;
             if (FlipACoin())
             {

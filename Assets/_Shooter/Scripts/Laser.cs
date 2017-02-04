@@ -40,8 +40,9 @@ public class Laser : MonoBehaviour {
         StartCoroutine(Particles(laserParticles, hit.point));
         if (hit.collider.name == "Spider(Clone)")
         {
-            StartCoroutine(Particles(spiderParticles, hit.point));
-            Destroy(hit.collider.gameObject);
+            Spider spider = hit.collider.gameObject.GetComponent<Spider>();
+            if (!spider.IsDead()) StartCoroutine(Particles(spiderParticles, hit.point));
+            spider.Kill();
         }
     }
 
@@ -49,7 +50,7 @@ public class Laser : MonoBehaviour {
     {
         GameObject instance = Instantiate(particles, position, Quaternion.identity);
         instance.transform.eulerAngles = new Vector3(-90, 0, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
         Destroy(instance);
         yield return null;
     }
